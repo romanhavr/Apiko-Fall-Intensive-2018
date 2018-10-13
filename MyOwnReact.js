@@ -8,8 +8,6 @@ const React = {
 	},
 };
 
-let i = 1;
-
 const app = 
 	React.createElement('div', { style: { backgroundColor: 'red' } }, [
 						React.createElement('span', undefined, 'Hello world'),
@@ -41,7 +39,6 @@ function createElementNode(node) {
 					element.appendChild.bind(element);
 				}
 			};
-			i++;
 			return element;
 		}
 	}
