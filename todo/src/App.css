@@ -1,0 +1,111 @@
+html {
+  background-color: rgb(243, 243, 243);
+}
+
+.app {
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  width: 800px;
+}
+
+.app>h1 {
+  color: rgb(77, 2, 58);
+}
+
+.header {
+  border-bottom: 1px solid dimgray;
+  border-right: 1px solid dimgray;
+  border-radius: 10px; 
+  box-shadow: 2px 2px 0 0 rgba(83, 14, 95, 0.5);
+  height: 50px;
+  padding: 2%;
+}
+
+.input {
+  width: 50%;
+  box-shadow: 2px 2px 0 0 rgba(83, 14, 95, 0.5);
+}
+
+.add-button {
+  margin-left: 10%;
+  box-shadow: 1px 1px 0 0 rgba(83, 14, 95, 0.5);
+  border-radius: 5px; 
+}
+
+.todos {
+  border-bottom: 1px solid dimgray;
+  border-right: 1px solid dimgray;
+  border-radius: 10px;
+  box-shadow: 2px 2px 0 0 rgba(83, 14, 95, 0.5);
+  float: left;
+  width: 70%;
+}
+
+.todos>h3 {
+  color: rgb(77, 2, 58);
+}
+
+.todo-items {
+  display: flex;
+  justify-content: space-between;
+  width: 95%;
+  margin: 5px;
+  border-bottom: 1px solid grey;
+}
+
+.todo-title {
+  display: flex;
+  width: 90%;
+}
+
+.todo-title-completed {
+  font-size: 0.8em;
+  text-align: left;
+  width:90%;
+  color: rgb(151, 35, 35);
+  background-color: rgb(220, 220, 220);
+  padding: 2px 5px 2px 5px;
+  box-shadow: 1px 1px 0 0 rgba(83, 14, 95, 0.5);
+  border-radius: 5px; 
+}
+
+.todo-delete-button {
+  box-shadow: 1px 1px 0 0 rgba(83, 14, 95, 0.5);
+  border-radius: 5px; 
+  display: flex;
+  height: 1.8em;
+}
+
+.info {
+  border-bottom: 1px solid dimgray;
+  border-right: 1px solid dimgray;
+  border-radius: 10px; 
+  box-shadow: 2px 2px 0 0 rgba(83, 14, 95, 0.5);
+  float: right;
+  width: 25%;
+}
+
+.info>h3 {
+  color: rgb(77, 2, 58);
+}
+
+.show-title {
+  float: left;
+  widows: 90%;
+}
+
+.count {
+  color: indigo;
+  font-weight: bold;
+  margin-left: 5px;
+}
+
+.show-button {
+  box-shadow: 1px 1px 0 0 rgba(83, 14, 95, 0.5);
+  border-radius: 5px; 
+  margin: 3%;
+  float: right;
+  width: 90%;
+}
+
