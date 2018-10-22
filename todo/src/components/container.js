@@ -1,15 +1,21 @@
 import React from 'react';
 import '.././App.css';
-import TodoItem from './todo-item';
+import TodoList from './todo-list';
 
 const Container = ({
 	value,
+	description,
 	onClick,
-	onChangeValue,
+	onChangeTitle,
+	onChangeDescription,
+	onChangeEditDescription,
 	inputRef,
 	todosItems,
 	onTodoTitleClick,
 	onTodoDeleteClick,
+	onTodoCancelClick,
+	onTodoSaveClick,
+	onTodoEditClick,
 	getCompletedCount,
 	getNotCompletedCount,
 	getTotalCount,
@@ -18,44 +24,50 @@ const Container = ({
 	onShowNotCompletedClick,
 }) => (
 	<div>
-		<div className='header'>
-			<input 
-				placeholder='Add todo here...'
-				value={value}
-				onChange={(e) => {onChangeValue(e.target.value)}}
-				ref={inputRef}
-				className='input'
-			> 
-			</input>
-			<button
-				onClick={onClick}
-				className='add-button'
-			>
-				Add todo
-			</button>
+		<div className='header box'>
+			<h3>Add TODO:</h3>
+			<div>	
+				<input 
+					className='input'
+					placeholder='Add TODO title here...'
+					value={value}
+					onChange={(e) => {onChangeTitle(e.target.value)}}
+					ref={inputRef}
+				> 
+				</input>
+			</div>
+			<div>
+				<textarea
+					className='todo-description'
+					placeholder='Add TODO description here...'
+					value={description}
+					onChange={(e) => {onChangeDescription(e.target.value)}}
+				/>
+				<button
+					onClick={onClick}
+					className='add-button'
+				>
+					Add todo
+				</button>
+			</div>
 		</div>
-		<div className='todos'>
-			<h3>Todos list</h3>
-				<ul>
-					{todosItems.map( item => (
-						<TodoItem 
-							{...item}
-							key={item.id}
-							onTitleClick={onTodoTitleClick}
-							onDeleteClick={onTodoDeleteClick}
-						/>
-						))
-					}
-				</ul>
-		</div>
-		<div className='info'>
+		<TodoList 
+			todosItems={todosItems}
+			onTitleClick={onTodoTitleClick}
+			onDeleteClick={onTodoDeleteClick}
+			onCancelClick={onTodoCancelClick}
+			onSaveClick={onTodoSaveClick}
+			onEditClick={onTodoEditClick}
+			onEditChange={onChangeEditDescription}
+		/>
+		<div className='info box'>
 			<h3>Info:</h3>
 			<span className='show-title'>Todos completed:
 				<span className='count'> {getCompletedCount}</span>
 			</span>
 			<br />
 			<button onClick={onShowCompletedClick} className='show-button'>
-				Show completed todos
+				Show completed
 			</button>
 			<br />
 			<span className='show-title'>Todos not completed:
@@ -63,7 +75,7 @@ const Container = ({
 			</span>
 			<br />
 			<button onClick={onShowNotCompletedClick} className='show-button'>
-				Show not completed todos
+				Show not completed
 			</button>
 			<br />
 			<span className='show-title'>Todos total:
