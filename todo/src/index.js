@@ -5,9 +5,13 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
+if (window.history.scrollRestoration) {
+    window.history.scrollRestoration = 'manual'
+};
+  
 ReactDOM.render(
     <BrowserRouter>
-            <App />
+        <App />
     </BrowserRouter>,
     document.getElementById('root')
 );
