@@ -1,0 +1,127 @@
+.App {
+  margin-left: auto;
+  margin-right: auto;
+  width: 90%;
+  min-width: 1000px; 
+}
+
+.header {
+  background-color: olivedrab;
+  height: 70px;
+  min-width: 1000px;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 20px 0 20px;
+}
+
+.header>h1 {
+  color: rgb(40, 49, 0)
+}
+
+.search {
+  font-style: italic;
+  height: 1.5em;
+  float: right;
+  width: 200px;
+  border-radius: 10px;
+  padding-left: 5px;
+  margin-top: 32px;
+}
+
+.user-login {
+  float: right;
+  margin-top: 32px;
+}
+
+.cart {
+  float: right;
+  margin-top: 32px;
+}
+
+.main {
+}
+
+.table-image {
+  width: 210px;
+}
+
+.product-image {
+  max-width: 200px;
+  max-height: 200px;
+}
+
+.admin-image {
+  max-width: 100px;
+  max-height: 100px;
+}
+
+.edit-image {
+  float: right;
+  max-width: 25%;
+}
+
+.chosen {
+  width: 350px;
+  text-align: center;
+}
+
+.chosen>img {
+  max-width: 340px;
+  max-height: 380px;
+ 
+}
+
+.buy-button {
+  float: right;
+  width: 80px;
+  background-color: rgba(148, 199, 46, 0.5);
+  border-color: rgba(137, 182, 46, 0.5)
+}
+
+.add-edit-delete-button {
+  float: right;
+  margin-right: 10px;
+}
+
+.edit {
+  background-color: rgba(255, 166, 0, 0.5);
+  border-color: rgb(235, 152, 0, 0.5)
+}
+
+.delete {
+  background-color: rgba(255, 68, 0, 0.5);
+  border-color: rgba(230, 61, 0, 0.5)
+}
+
+.add {
+  background-color: rgba(55, 212, 115, 0.5);
+  border-color: rgba(47, 177, 97, 0.5)
+}
+
+.description-edit {
+  width: 70%;
+  height: 60px;
+  resize: none;
+}
+
+.menu>li {
+  text-align: center;
+  display: inline;
+  margin: 3px;
+}
+
+.footer {
+  background-color: olivedrab;
+  color: rgb(40, 49, 0);
+  position: relative;
+  padding-left: 20px;
+  height: 2.5em;
+  width: 100%;
+  bottom: 0;
+}
+
+.cart-list {
+  width: 80%;
+  display: flex;
+  justify-content: space-between;
+}
