@@ -10,6 +10,9 @@ const CartScene = ({
     // I don't get WHY it doesn't see "state" when handle click on Cart link 
     // from product list. But see the "state" when page is reloaded on Cart. 
 
+    // Normaly this page is shown in modal window and after refresh - simple page,
+    // but so far it can act this way only without "map" function.
+
     let totalPrice = 0;
     products.map( p => (totalPrice += p.price))
                     
