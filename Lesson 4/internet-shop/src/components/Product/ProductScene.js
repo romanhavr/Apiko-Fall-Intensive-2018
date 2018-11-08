@@ -8,6 +8,7 @@ const ProductScene = ({
     description,
     price,
     image,
+    item,
     onCartAddClick
 }) => (
     <div className='product'>
@@ -31,7 +32,7 @@ const ProductScene = ({
                             </button>
                             <button
                                 className='add-edit-delete-button'
-                                onClick = {() => onCartAddClick(id)}
+                                onClick = {() => onCartAddClick(item)}
                             >
                                 Add to cart
                             </button>

@@ -3,15 +3,21 @@ import ProductScene from '../Product/ProductScene';
 import AdminProductScene from '../Product/AdminProductScene';
 
 const ProductListScene = ({
-    loading,
+    isLoading,
+    isError,
+    error,
     admin,
     products,
     onProductTitleClick,
     onProductDeleteClick,
     onCartAddClick
 }) =>  {
-    if (loading) 
+    if (isLoading) 
       return <p>Loading...</p>
+      console.log('isError - ',isError);
+      console.log('products - ',products);
+    if (isError) 
+      return <p>Error...</p>
     return (
     <div>
         <h3>Product list</h3>    
@@ -20,6 +26,7 @@ const ProductListScene = ({
                 <AdminProductScene
                     key = {p.id}
                     {...p}
+                    item = {p}
                     onTitleClick = {onProductTitleClick}
                     onDeleteClick = {onProductDeleteClick}
                 />)
@@ -28,6 +35,7 @@ const ProductListScene = ({
                 <ProductScene
                     key={p.id}
                     {...p}
+                    item = {p}
                     onCartAddClick = {onCartAddClick}
                 />)
             )

@@ -35,7 +35,9 @@ class AdminScene extends React.Component {
     } 
 
     async componentDidMount() {
-        const productsData = await Api.Products.fetchProducts();
+        const productsData = await Api.Products.fetch
+        //Products
+        ();
         this.setState({
             products: productsData.data,
             loading: false,

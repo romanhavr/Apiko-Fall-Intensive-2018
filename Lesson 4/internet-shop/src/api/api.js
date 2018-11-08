@@ -11,7 +11,7 @@ export const setToken = (token) => {
 }
 
 export const Products = {
-    fetchProducts() {
+    fetch() {
         return axios.get(`/api/v1/products`);
     }
 }

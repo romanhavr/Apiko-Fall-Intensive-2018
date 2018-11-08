@@ -28,7 +28,7 @@ const ProductChosenScene = ({
                                 </button>
                                 <button
                                     className='add-edit-delete-button'
-                                    onClick = {() => onCartAddClick(id)}
+                                    onClick = {() => onCartAddClick(product)}
                                 >
                                     Add to cart
                                 </button>

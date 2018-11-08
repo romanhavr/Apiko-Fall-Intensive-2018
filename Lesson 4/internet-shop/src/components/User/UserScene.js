@@ -2,6 +2,10 @@ import React from 'react';
 import { Switch} from 'react-router';
 import { withRouter } from 'react-router-dom';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { connect } from 'react-redux';
+import * as productsOperations from '../../modules/products/productsOperations';
+import * as productsSelectors from '../../modules/products/productsSelectors';
+import * as cartActions from '../../modules/cart/cartActions';
 import Modal from '../../common/modal';
 import ProductChosenScene from '../Product/ProductChosenScene';
 import ProductListScene from '../ProductList/ProductListScene';
@@ -12,47 +16,34 @@ import {TermsAndConditionsScene} from '../TermsAndConditions/TermsaAndConditions
 import {PrivacyPolicyScene} from '../PrivacyPolicy/PrivacyPolicyScene';
 import {NotFoundScene} from '../NotFound/NotFoundScene';
 import { routes } from '../../common/routes';
-import * as Api from '../../api/api';
+// import * as Api from '../../api/api';
 
 class UserScene extends React.Component {
-    constructor(props) {
+   /* constructor(props) {
 		super(props);
 
-        this.handleCartAdd = this.handleCartAdd.bind(this);
+       this.handleCartAdd = this.handleCartAdd.bind(this);
 
-        this.state = {
-            products: [],
-            loading: true,
-            cartProducts: []
-        };
-     } 
+     } */
 
-    async componentDidMount() {
-        const productsData = await Api.Products.fetchProducts();
-        this.setState({
-            products: productsData.data,
-            loading: false
-        });
+    componentDidMount() {
+        this.props.fetchProducts();
     } 
     
-    handleCartAdd(id) {
-        const currentProductIndex = this.state.products.findIndex(i => 
+   /* handleCartAdd(id) {
+        const currentItemIndex = this.props.products.findIndex(i => 
             i.id === id);
     
-        if (currentProductIndex === -1) {
+        if (currentItemIndex === -1) {
             return
         }
-        const product = this.state.products[currentProductIndex];
+        const item = this.props.products[currentItemIndex];
         
-        const newProducts = [...this.state.cartProducts];
-        newProducts.push(product);
+       // this.props.items.push(item); 
 
-        this.setState({
-            cartProducts: newProducts
-        });
-        
-        alert(product.title+' - is added to Cart.')
-    }
+     //  this.props.addToCart();
+        console.log('dfh - ',this.props.items)
+    } */
 
     previousLocation = null;
 
@@ -107,21 +98,23 @@ class UserScene extends React.Component {
                 <Route exact path={routes.privacypolicy} component={PrivacyPolicyScene} />
                 <Route exact
                     path = {routes.cart}
-                    render={props => <CartScene {...props} {...this.state} />}
+                    render={props => <CartScene {...props} {...this.props} />}
                 />
                 <Route 
                     path={routes.productID}
-                    render={ () => <ProductChosenScene
-                                        {...this.state}
-                                        onCartAddClick = {this.handleCartAdd}    
+                    render={() => <ProductChosenScene
+                                        {...this.props}
+                                        onCartAddClick = {this.props.addToCart} 
+                                                        //{this.handleCartAdd}   
                                     />}
                 />
                 <Route exact
                     path={routes.home}
                     render={props => <ProductListScene 
                                         {...props}
-                                        {...this.state} 
-                                        onCartAddClick = {this.handleCartAdd}
+                                        {...this.props} 
+                                        onCartAddClick = {this.props.addToCart}
+                                                        //{this.handleCartAdd}
                                     />}
                 />
                 <Route path='*' component={NotFoundScene} />
@@ -143,4 +136,20 @@ class UserScene extends React.Component {
   }
 }
 
-export default withRouter(UserScene);
+const mapStateToProps = state => ({
+    products: productsSelectors.getProducts(state),
+    items: state.cart.items,
+    isLoading: state.products.isLoading,
+    isError: !!state.products.error,
+    error: state.products.error,
+});
+
+const mapStateToDispatch = {
+    fetchProducts: productsOperations.fetchProducts,
+    addToCart: cartActions.add,
+};
+
+export default connect(
+    mapStateToProps,
+    mapStateToDispatch)   
+(withRouter(UserScene));
